@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Final_Project.Models;
+using System.Diagnostics;
 
 namespace Final_Project.Controllers
 {
@@ -59,13 +60,18 @@ namespace Final_Project.Controllers
         [HttpPost]
         public IHttpActionResult UpdateTrip(int id, Trip trip)
         {
+            Debug.WriteLine("i have reached update trip method");
             if (!ModelState.IsValid)
             {
+                Debug.WriteLine("model state not valid");
                 return BadRequest(ModelState);
             }
 
             if (id != trip.TripId)
             {
+                Debug.WriteLine("id mismatch");
+                Debug.WriteLine("GET parameter"+id);
+                Debug.WriteLine("POST parameter"+trip.TripId);
                 return BadRequest();
             }
 
@@ -79,6 +85,7 @@ namespace Final_Project.Controllers
             {
                 if (!TripExists(id))
                 {
+                    Debug.WriteLine("no trip with this id exist");
                     return NotFound();
                 }
                 else
@@ -86,7 +93,7 @@ namespace Final_Project.Controllers
                     throw;
                 }
             }
-
+            Debug.WriteLine("no condition triggered");
             return StatusCode(HttpStatusCode.NoContent);
         }
 
@@ -120,7 +127,7 @@ namespace Final_Project.Controllers
             db.Trips.Remove(trip);
             db.SaveChanges();
 
-            return Ok(trip);
+            return Ok();
         }
 
         protected override void Dispose(bool disposing)
