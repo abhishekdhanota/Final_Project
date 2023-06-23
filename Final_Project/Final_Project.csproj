@@ -182,9 +182,13 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DriverController.cs" />
+    <Compile Include="Controllers\DriverDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TripController.cs" />
     <Compile Include="Controllers\TripsController.cs" />
+    <Compile Include="Controllers\TruckController.cs" />
     <Compile Include="Controllers\TruckDataController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -201,13 +205,13 @@
     <Compile Include="Migrations\202306120126078_trip.designer.cs">
       <DependentUpon>202306120126078_trip.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202306122105519_truck-drivers.cs" />
-    <Compile Include="Migrations\202306122105519_truck-drivers.designer.cs">
-      <DependentUpon>202306122105519_truck-drivers.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202306122155135_destination.cs" />
     <Compile Include="Migrations\202306122155135_destination.designer.cs">
       <DependentUpon>202306122155135_destination.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202306231733482_driver1.cs" />
+    <Compile Include="Migrations\202306231733482_driver1.designer.cs">
+      <DependentUpon>202306231733482_driver1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -277,9 +281,21 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Trip\List.cshtml" />
+    <Content Include="Views\Trip\Details.cshtml" />
+    <Content Include="Views\Trip\New.cshtml" />
+    <Content Include="Views\Trip\Update.cshtml" />
+    <Content Include="Views\Trip\Error.cshtml" />
+    <Content Include="Views\Trip\Delete.cshtml" />
+    <Content Include="Views\Driver\Add.cshtml" />
+    <Content Include="Views\Driver\List.cshtml" />
+    <Content Include="Views\Truck\List.cshtml" />
+    <Content Include="Views\Truck\Details.cshtml" />
+    <Content Include="Views\Driver\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\DriverData\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -304,11 +320,11 @@
     <EmbeddedResource Include="Migrations\202306120126078_trip.resx">
       <DependentUpon>202306120126078_trip.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202306122105519_truck-drivers.resx">
-      <DependentUpon>202306122105519_truck-drivers.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202306122155135_destination.resx">
       <DependentUpon>202306122155135_destination.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306231733482_driver1.resx">
+      <DependentUpon>202306231733482_driver1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

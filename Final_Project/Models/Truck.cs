@@ -11,7 +11,10 @@ namespace Final_Project.Models
         [Key]
         public int TruckID { get; set; }
         public string TruckNumber { get; set; }
-
-        public ICollection<Driver> Drivers { get; set; }
+    }
+    public class TruckDto
+    {
+        public int TruckID { get; set; }
+        public string TruckNumber { get; set; }
     }
 }

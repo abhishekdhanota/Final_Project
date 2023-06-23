@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Final_Project.Models.TripDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>Ongoing Trips</h2>
+@foreach(var trip in Model)
+            {
+        <li>
+            
+                <h2><a href="/Trip/Details/@trip.TripId">@trip.DestinationName</a></h2>
+                <div>@trip.TruckNumber </div>
+                <div>@trip.DriverName</div>
+         
+</li>
+        }
+
+

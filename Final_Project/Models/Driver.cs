@@ -14,8 +14,10 @@ namespace Final_Project.Models
         public int DriverID { get; set; }
         public string DriverName { get; set; }
    
-    
-        public ICollection<Truck> Trucks { get; set; }
-    
+    }
+    public class DriverDto
+    {
+        public int DriverID { get; set; }
+        public string DriverName { get; set; }
     }
 }

@@ -1,0 +1,23 @@
+﻿@model Final_Project.Models.TripDto
+
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Update</h2>
+<form action="/Trip/Update/@Model.TripId" method="POST">
+    <p>@Model.TripId</p>
+    <div>
+        <label>Driver Name </label><input type="text" name="DriverID" />
+    </div>
+    <div>
+        <label>Truck Number </label><input type="text" name="TruckID" />
+    </div>
+    <div>
+        <label>Destination </label><input type="text" name="DestinationId" />
+    </div>
+    <div>
+        <input type="submit" value="Edit Trip" />
+    </div>
+
+</form>

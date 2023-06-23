@@ -1,0 +1,11 @@
+﻿@model Final_Project.Models.TripDto
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+<form action="/Trip/Delete/@Model.TripId" method="post">
+    <input type="submit" name="name" value="Yes" />
+</form>
+<a href="/Trip/Details/@Model.TripId">No</a>
+

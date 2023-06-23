@@ -1,0 +1,13 @@
+﻿@model Final_Project.Models.TripDto
+@{
+    ViewBag.Title = "View";
+}
+<a href="/Trip/List">Ongoing Trips</a>
+<a href="/Trip/Update/@Model.TripId">Update Trip</a>
+<a href="/Trip/Delete/@Model.TripId">Delete Trip</a>
+
+
+<h2>destination:@Model.DestinationName</h2>
+<div>@Model.TruckNumber </div>
+<div>@Model.DriverName</div>
+

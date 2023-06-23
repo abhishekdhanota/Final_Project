@@ -7,13 +7,13 @@ namespace Final_Project.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class truckdrivers : IMigrationMetadata
+    public sealed partial class driver1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(truckdrivers));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(driver1));
         
         string IMigrationMetadata.Id
         {
-            get { return "202306122105519_truck-drivers"; }
+            get { return "202306231733482_driver1"; }
         }
         
         string IMigrationMetadata.Source

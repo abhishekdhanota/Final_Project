@@ -1,0 +1,22 @@
+﻿@model Final_Project.Models.TripDto
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+<form action="/Trip/Create" method="POST">
+    <div>
+        <label>Driver Name </label><input type="text" name="DriverID" />
+    </div>
+    <div>
+        <label>Truck Number </label><input type="text" name="TruckID" />
+    </div>
+    <div>
+        <label>Destination </label><input type="text" name="DestinationId" />
+    </div>
+    <div>
+        <input type="submit" value="Add Trip" />
+    </div>
+
+</form>
+

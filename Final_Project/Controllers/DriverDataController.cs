@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -13,61 +12,60 @@ using Final_Project.Models;
 
 namespace Final_Project.Controllers
 {
-    public class TruckDataController : ApiController
+    public class DriverDataController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: api/TruckData/listTrucks
+        // GET: api/DriverData/ListDrivers
         [HttpGet]
-        public IEnumerable<TruckDto> ListTrucks()
+        public IEnumerable<DriverDto> ListDrivers()
         {
-            List<Truck> Trucks = db.Trucks.ToList();
-            List<TruckDto> TruckDtos = new List<TruckDto>();
+           List<Driver>Drivers= db.Drivers.ToList();
+            List<DriverDto> DriverDtos = new List<DriverDto>();
 
-            Trucks.ForEach(a => TruckDtos.Add(new TruckDto()
+            Drivers.ForEach(a => DriverDtos.Add(new DriverDto()
             {
-                TruckID = a.TruckID,
-                TruckNumber = a.TruckNumber
+                DriverID= a.DriverID,
+                DriverName= a.DriverName
             }));
-            return TruckDtos;
+            return DriverDtos;
         }
 
-        // GET: api/TruckData/FindTrucks/5
+        // GET: api/DriverData/FindDriver
+        [ResponseType(typeof(Driver))]
         [HttpGet]
-        [ResponseType(typeof(Truck))]
-        public IHttpActionResult FindTruck(int id)
+        public IHttpActionResult FindDriver(int id)
         {
-            Truck Truck = db.Trucks.Find(id);
-            TruckDto TruckDto = new TruckDto()
+            Driver Driver = db.Drivers.Find(id);
+            DriverDto DriverDto = new DriverDto()
             {
-                TruckID = Truck.TruckID,
-                TruckNumber = Truck.TruckNumber 
+                DriverID = Driver.DriverID,
+                DriverName = Driver.DriverName
             };
-            
-            if (Truck == null)
+            if (Driver == null)
             {
                 return NotFound();
             }
 
-            return Ok(TruckDto);
+            return Ok(DriverDto);
         }
 
-        // POST: api/TruckData/UpdateTruck/5
+        // PUT: api/DriverData/5
         [ResponseType(typeof(void))]
         [HttpPost]
-        public IHttpActionResult UpdateTruck(int id, Truck truck)
+        public IHttpActionResult UpdateDriver(int id, Driver driver)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != truck.TruckID)
+            if (id != driver.DriverID)
             {
                 return BadRequest();
             }
 
-            db.Entry(truck).State = EntityState.Modified;
+            db.Entry(driver).State = EntityState.Modified;
 
             try
             {
@@ -75,7 +73,7 @@ namespace Final_Project.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!TruckExists(id))
+                if (!DriverExists(id))
                 {
                     return NotFound();
                 }
@@ -88,34 +86,34 @@ namespace Final_Project.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/TruckData/AddTruck
-        [ResponseType(typeof(Truck))]
+        // POST: api/DriverData/AddDriver
+        [ResponseType(typeof(Driver))]
         [HttpPost]
-        public IHttpActionResult AddTruck(Truck truck)
+        public IHttpActionResult AddDriver(Driver driver)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Trucks.Add(truck);
+            db.Drivers.Add(driver);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = truck.TruckID }, truck);
+            return CreatedAtRoute("DefaultApi", new { id = driver.DriverID }, driver);
         }
 
-        // POST: api/TruckData/DeleteTruck/5
-        [ResponseType(typeof(Truck))]
+        // DELETE: api/DriverData/DeleteAnimal/5
+        [ResponseType(typeof(Driver))]
         [HttpPost]
-        public IHttpActionResult DeleteTruck(int id)
+        public IHttpActionResult DeleteDriver(int id)
         {
-            Truck truck = db.Trucks.Find(id);
-            if (truck == null)
+            Driver driver = db.Drivers.Find(id);
+            if (driver == null)
             {
                 return NotFound();
             }
 
-            db.Trucks.Remove(truck);
+            db.Drivers.Remove(driver);
             db.SaveChanges();
 
             return Ok();
@@ -130,9 +128,9 @@ namespace Final_Project.Controllers
             base.Dispose(disposing);
         }
 
-        private bool TruckExists(int id)
+        private bool DriverExists(int id)
         {
-            return db.Trucks.Count(e => e.TruckID == id) > 0;
+            return db.Drivers.Count(e => e.DriverID == id) > 0;
         }
     }
 }

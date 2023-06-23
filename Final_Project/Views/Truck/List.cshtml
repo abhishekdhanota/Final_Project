@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Final_Project.Models.TruckDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>Company Trucks</h2>
+@foreach (var truck in Model)
+{
+    <h4>@truck.TruckNumber</h4>
+
+}
+
