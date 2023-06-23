@@ -1,0 +1,16 @@
+﻿@model Final_Project.Models.TruckDto
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+<form action="/Truck/Create" method="POST">
+    <div>
+        <label>TruckNumber </label><input type="text" name="TruckNumber" />
+    </div>
+
+    <div>
+        <input type="submit" value="Add Truck" />
+    </div>
+
+</form>

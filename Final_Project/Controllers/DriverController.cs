@@ -1,15 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
-using System.Net.Http;
 using Final_Project.Models;
+using System.Web.Script.Serialization;
+using Microsoft.SqlServer.Server;
+
 
 namespace Final_Project.Controllers
 {
     public class DriverController : Controller
     {
+        private JavaScriptSerializer jss = new JavaScriptSerializer();
         // GET: Driver/list
         public ActionResult List()
         {
@@ -41,25 +46,28 @@ namespace Final_Project.Controllers
         }
 
         // GET: Driver/Create
-        public ActionResult Create()
+        public ActionResult New()
         {
             return View();
         }
 
         // POST: Driver/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Driver driver)
         {
-            try
+            HttpClient client = new HttpClient()
             {
-                // TODO: Add insert logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            };
+            string url = "https://localhost:44368/api/driverdata/adddriver";
+            String jsonpayload = jss.Serialize(driver);
+            Debug.WriteLine(jsonpayload);
+
+            HttpContent content = new StringContent(jsonpayload);
+            content.Headers.ContentType.MediaType = "application/json";
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
+
+            return RedirectToAction("List");
         }
 
         // GET: Driver/Edit/5
@@ -87,23 +95,33 @@ namespace Final_Project.Controllers
         // GET: Driver/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            HttpClient client = new HttpClient()
+            {
+
+            };
+            string url = "https://localhost:44368/api/driverdata/finddriver/"+id;
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            DriverDto selecteddriver = response.Content.ReadAsAsync<DriverDto>().Result;
+            return View(selecteddriver);
         }
 
         // POST: Driver/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, Driver driver)
         {
-            try
-            {
-                // TODO: Add delete logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
+            HttpClient client = new HttpClient()
             {
-                return View();
-            }
+
+            };
+            string url = "https://localhost:44368/api/driverdata/deletedriver/" + id;
+            String jsonpayload = jss.Serialize(driver);
+            HttpContent content = new StringContent("");
+            content.Headers.ContentType.MediaType = "application/json";
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
+            return RedirectToAction("List");
+
+
         }
     }
 }

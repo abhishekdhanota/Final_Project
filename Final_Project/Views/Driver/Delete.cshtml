@@ -1,0 +1,10 @@
+﻿@model Final_Project.Models.DriverDto
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+<form action="/Driver/Delete/@Model.DriverID" method="post">
+    <input type="submit" name="name" value="Yes" />
+</form>
+<a href="/Driver/Details/@Model.DriverID">No</a>

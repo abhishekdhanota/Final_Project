@@ -1,0 +1,11 @@
+﻿@model Final_Project.Models.TruckDto
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+<form action="/Truck/Delete/@Model.TruckID" method="post">
+    <input type="submit" name="name" value="Yes" />
+</form>
+<a href="/Truck/Details/@Model.TruckID">No</a>
+

@@ -6,7 +6,7 @@
 <h2>Company Drivers</h2>
 @foreach(var driver in Model)
 {
-    <h4>@driver.DriverName</h4>
+    <h4><a href="/Driver/Details/@driver.DriverID">@driver.DriverName</a></h4>
 
 }
-
+<h3><a href="/driver/new">Add new Driver</a></h3>

@@ -4,6 +4,7 @@
 }
 
 <h2>Ongoing Trips</h2>
+
 @foreach(var trip in Model)
             {
         <li>
@@ -13,6 +14,9 @@
                 <div>@trip.DriverName</div>
          
 </li>
+
+
         }
+<h3><a href="/trip/new">Add new trip</a></h3>
 
 

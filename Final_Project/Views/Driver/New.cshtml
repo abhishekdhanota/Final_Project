@@ -1,0 +1,16 @@
+﻿@model Final_Project.Models.DriverDto
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+<form action="/Driver/Create" method="POST">
+    <div>
+        <label>Driver Name </label><input type="text" name="DriverName" />
+    </div>
+
+    <div>
+        <input type="submit" value="Add Driver" />
+    </div>
+
+</form>

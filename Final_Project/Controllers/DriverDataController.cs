@@ -102,7 +102,6 @@ namespace Final_Project.Controllers
             return CreatedAtRoute("DefaultApi", new { id = driver.DriverID }, driver);
         }
 
-        // DELETE: api/DriverData/DeleteAnimal/5
         [ResponseType(typeof(Driver))]
         [HttpPost]
         public IHttpActionResult DeleteDriver(int id)
