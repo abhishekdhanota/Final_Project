@@ -57,10 +57,25 @@ namespace Final_Project.Controllers
         // GET: Trip/New
         public ActionResult New()
         {
+            string url = "driverdata/listdrivers";
+            string url1 = "truckdata/listtrucks";
+            string url2 = "destinationdata/listdestinations";
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            HttpResponseMessage response1 = client.GetAsync(url1).Result;
+            HttpResponseMessage response2 = client.GetAsync(url2).Result;
 
 
+            IEnumerable<DriverDto> driversoptions = response.Content.ReadAsAsync<IEnumerable<DriverDto>>().Result;
+            IEnumerable<TruckDto> truckoptions = response1.Content.ReadAsAsync<IEnumerable<TruckDto>>().Result;
+            IEnumerable<DestinationDto> destinationoptions = response2.Content.ReadAsAsync<IEnumerable<DestinationDto>>().Result;
 
-            return View();
+
+            Class1 class1 = new Class1();
+            class1.driverdto = driversoptions.ToList();
+            class1.truckdto= truckoptions.ToList();
+            class1.destinationdto = destinationoptions.ToList();
+
+            return View(class1);
         }
 
         // POST: Trip/Create

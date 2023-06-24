@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Final_Project.Models.DestinationDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>Destinations</h2>
+@foreach (var destination in Model)
+{
+    <h4>@destination.DestinationName</h4>
+
+
+}
+

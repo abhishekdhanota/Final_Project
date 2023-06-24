@@ -14,4 +14,9 @@ namespace Final_Project.Models
         public int DestinationId { get; set; }
         public string DestinationName { get; set; }
     }
+    public class DestinationDto
+    {
+        public int DestinationId { get; set; }
+        public string DestinationName { get; set; }
+    }
 }

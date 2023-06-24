@@ -182,6 +182,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DestinationController.cs" />
+    <Compile Include="Controllers\DestinationDataController.cs" />
     <Compile Include="Controllers\DriverController.cs" />
     <Compile Include="Controllers\DriverDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -215,6 +217,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Class1.cs" />
     <Compile Include="Models\Destination.cs" />
     <Compile Include="Models\Driver.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -295,6 +298,7 @@
     <Content Include="Views\Truck\New.cshtml" />
     <Content Include="Views\Driver\Delete.cshtml" />
     <Content Include="Views\Truck\Delete.cshtml" />
+    <Content Include="Views\Destination\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
