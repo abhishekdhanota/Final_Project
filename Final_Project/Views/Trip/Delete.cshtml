@@ -3,9 +3,42 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
-<form action="/Trip/Delete/@Model.TripId" method="post">
-    <input type="submit" name="name" value="Yes" />
-</form>
-<a href="/Trip/Details/@Model.TripId">No</a>
+<style>
+   
 
+   
+
+    .delete-form {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+        .delete-form input[type="submit"],
+        .delete-form a {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+            .delete-form input[type="submit"]:hover,
+            .delete-form a:hover {
+                background-color: #c82333;
+            }
+
+        .delete-form a {
+            margin-left: 10px;
+            background-color: #28a745;
+        }
+</style>
+
+<h2>Delete</h2>
+<form class="delete-form" action="/Trip/Delete/@Model.TripId" method="post">
+    <input type="submit" name="name" value="Yes" />
+    <a href="/Trip/Details/@Model.TripId">No</a>
+</form>

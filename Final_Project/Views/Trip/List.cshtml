@@ -3,20 +3,65 @@
     ViewBag.Title = "List";
 }
 
+<style>
+    body {
+        font-family: Arial, sans-serif;
+         }
+
+    h2 {
+        font-size: 24px;
+        color: #333;
+        margin: 10px 0;
+       }
+
+    li.listone {
+        list-style-type: none;
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #f5f5f5;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+        li:hover {
+            background-color: #eaeaea;
+        }
+
+    a {
+        color: #333;
+        text-decoration: none;
+    }
+
+    .trip-details {
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+        .trip-details div {
+            margin-bottom: 5px;
+        }
+
+    .add-trip-link {
+        margin-top: 20px;
+    }
+</style>
+
 <h2>Ongoing Trips</h2>
 
-@foreach(var trip in Model)
-            {
-        <li>
-            
-                <h2><a href="/Trip/Details/@trip.TripId">@trip.DestinationName</a></h2>
-                <div>@trip.TruckNumber </div>
-                <div>@trip.DriverName</div>
-         
-</li>
+@foreach (var trip in Model)
+{
+    <li class="listone">
+        <a href="/Trip/Details/@trip.TripId">
+        <h2>Destination - @trip.DestinationName</h2>
+        <div class="trip-details">
+            <div>Truck-Number - @trip.TruckNumber</div>
+            <div>Driver - @trip.DriverName</div>
+        </div>
+        </a>
+    </li>
+}
 
-
-        }
-<h3><a href="/trip/new">Add new trip</a></h3>
-
+<h3 class="add-trip-link"><a href="/trip/new">Add new trip</a></h3>
 

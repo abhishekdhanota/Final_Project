@@ -1,23 +1,42 @@
-﻿@model Final_Project.Models.TripDto
-
+﻿@model Final_Project.Models.Class1
 @{
     ViewBag.Title = "Update";
 }
 
 <h2>Update</h2>
-<form action="/Trip/Update/@Model.TripId" method="POST">
-    <p>@Model.TripId</p>
+<form action="/Trip/Update/@Model.tripdto.TripId" method="POST">
     <div>
-        <label>Driver Name </label><input type="text" name="DriverID" />
+        <label>Driver Name </label>
+        <select name="DriverID">
+            @foreach (var drivers in Model.driverdto)
+            {
+                <option value="@drivers.DriverID">@drivers.DriverName</option>
+            }
+        </select>
     </div>
     <div>
-        <label>Truck Number </label><input type="text" name="TruckID" />
+        <label>Truck Number </label>
+        <select name="TruckID">
+            @foreach (var trucks in Model.truckdto)
+            {
+                <option value="@trucks.TruckID">@trucks.TruckNumber</option>
+
+            }
+        </select>
+
     </div>
     <div>
-        <label>Destination </label><input type="text" name="DestinationId" />
+        <label>Destination </label>
+        <select name="DestinationId">
+            @foreach (var destinations in Model.destinationdto)
+            {
+                <option value="@destinations.DestinationId">@destinations.DestinationName</option>
+
+            }
+        </select>
     </div>
     <div>
-        <input type="submit" value="Edit Trip" />
+        <input type="submit" value="Add Trip" />
     </div>
 
 </form>

@@ -60,6 +60,7 @@ namespace Final_Project.Controllers
         [HttpPost]
         public IHttpActionResult UpdateTrip(int id, Trip trip)
         {
+        
             Debug.WriteLine("i have reached update trip method");
             if (!ModelState.IsValid)
             {

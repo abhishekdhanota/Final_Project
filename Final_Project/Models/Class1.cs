@@ -13,6 +13,7 @@ namespace Final_Project.Models
 
         public List<DestinationDto> destinationdto { get; set; }
 
+        public TripDto tripdto { get; set; }
 
     }
 }

@@ -38,6 +38,7 @@ namespace Final_Project.Controllers
         }
 
         // GET: Trip/Details/5
+        [Authorize]
         public ActionResult Details(int id)
         {
             // curl https://localhost:44368/api/trips/findtrip/{id}
@@ -55,6 +56,7 @@ namespace Final_Project.Controllers
         }
 
         // GET: Trip/New
+        [Authorize]
         public ActionResult New()
         {
             string url = "driverdata/listdrivers";
@@ -79,6 +81,7 @@ namespace Final_Project.Controllers
         }
 
         // POST: Trip/Create
+        [Authorize]
         [HttpPost]
         public ActionResult Create(Trip trip)
         {
@@ -96,15 +99,51 @@ namespace Final_Project.Controllers
         }
 
         // GET: Trip/Edit/5
+        [Authorize]
         public ActionResult Update(int id)
         {
-            string url = "trips/findtrip/" + id;
+
+            string url = "driverdata/listdrivers";
+            string url1 = "truckdata/listtrucks";
+            string url2 = "destinationdata/listdestinations";
+            string url3 = "trips/findtrip/" + id;
+
             HttpResponseMessage response = client.GetAsync(url).Result;
-            TripDto selectedtrip = response.Content.ReadAsAsync<TripDto>().Result;
-            return View(selectedtrip);
+            HttpResponseMessage response1 = client.GetAsync(url1).Result;
+            HttpResponseMessage response2 = client.GetAsync(url2).Result;
+            HttpResponseMessage response3 = client.GetAsync(url3).Result;
+
+
+
+            IEnumerable<DriverDto> driversoptions = response.Content.ReadAsAsync<IEnumerable<DriverDto>>().Result;
+            IEnumerable<TruckDto> truckoptions = response1.Content.ReadAsAsync<IEnumerable<TruckDto>>().Result;
+            IEnumerable<DestinationDto> destinationoptions = response2.Content.ReadAsAsync<IEnumerable<DestinationDto>>().Result;
+            TripDto tripoptions = response3.Content.ReadAsAsync<TripDto>().Result;
+
+
+
+            Class1 class1 = new Class1();
+            class1.driverdto = driversoptions.ToList();
+            class1.truckdto = truckoptions.ToList();
+            class1.destinationdto = destinationoptions.ToList();
+            class1.tripdto=tripoptions;
+
+            return View(class1);
+
+
+
+
+
+
+
+
+
+
+
         }
 
         // POST: Trip/Edit/5
+        [Authorize]
         [HttpPost]
         public ActionResult Update(int id, Trip trip)
         {
@@ -127,6 +166,7 @@ namespace Final_Project.Controllers
         }
 
         // GET: Trip/Delete/5
+        [Authorize]
         public ActionResult Delete(int id)
         {
             string url = "trips/findtrip/" + id;
@@ -136,7 +176,9 @@ namespace Final_Project.Controllers
         }
 
         // POST: Trip/Delete/5
+        [Authorize]
         [HttpPost]
+
         public ActionResult Delete(int id, FormCollection collection)
         {
             string url = "trips/deletetrip/" + id;

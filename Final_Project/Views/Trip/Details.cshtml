@@ -2,12 +2,48 @@
 @{
     ViewBag.Title = "View";
 }
+
+<style>
+ .details{
+     margin:10px;
+ }
+    .details a {
+        color: #007bff;
+        text-decoration: none;
+        margin-right: 10px;
+        font-size: 16px;
+        border:2px solid black;
+        padding:5px;
+        
+    }
+    
+
+    h2 {
+        font-size: 24px;
+        color: #333;
+        margin: 10px 0;
+    }
+
+    .trip-details {
+        margin-top: 20px;
+    }
+
+        .trip-details div {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+</style>
+<div class="details">
+
 <a href="/Trip/List">Ongoing Trips</a>
 <a href="/Trip/Update/@Model.TripId">Update Trip</a>
 <a href="/Trip/Delete/@Model.TripId">Delete Trip</a>
 
+<h2>Destination: @Model.DestinationName</h2>
+<div class="trip-details">
+    <div>Truck Number: @Model.TruckNumber</div>
+    <div>Driver Name: @Model.DriverName</div>
+</div>
+    </div>
 
-<h2>destination:@Model.DestinationName</h2>
-<div>@Model.TruckNumber </div>
-<div>@Model.DriverName</div>
 
